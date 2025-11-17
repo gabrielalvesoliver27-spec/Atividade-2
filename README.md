@@ -1,65 +1,58 @@
-ATIVIDADE 2
+# ONG Corrente do Bem - Atividade 2
 
-Projeto Website - ONG Corrente do Bem
-Este repositório contém o código-fonte de um site estático e totalmente responsivo para uma organização fictícia, a "ONG Corrente do Bem".
+Este projeto é um site estático e responsivo de 3 páginas para a "ONG Corrente do Bem". O foco desta atividade foi construir uma base de front-end robusta do zero, sem o uso de frameworks como Bootstrap ou React.
 
-O projeto foi desenvolvido do zero, sem o uso de frameworks como Bootstrap ou Tailwind. O objetivo principal foi construir um Design System e um Grid System próprios, demonstrando um profundo conhecimento de HTML5 semântico, CSS3 moderno (Flexbox, Variáveis) e JavaScript puro para interatividade.
+O projeto demonstra a criação de um **Design System** completo, um **Grid System responsivo** de 12 colunas e **componentes interativos** (Menu, Dropdown, Modal) com JavaScript puro.
 
-📖 Páginas e Funcionalidades
-O site é composto por 3 páginas principais, todas conectadas pelo mesmo sistema de design e componentes.
+## 🚀 Link de Visualização (Deploy)
 
-index.html (Página Inicial)
+O site foi publicado usando o GitHub Pages e pode ser acessado no link abaixo:
 
-Apresenta a missão da ONG e um banner principal.
+**https://gabrielalvesoliver27-spec.github.io/Atividade-4/**
 
-Inclui um componente de "Alerta" para campanhas (Campanha de Inverno).
+---
 
-Possui uma chamada para ação (CTA) que ativa um Modal de Doação.
+## 📖 Páginas do Projeto
 
-Projetos.html (Página de Projetos)
+O site é composto por 3 páginas HTML, todas utilizando o mesmo `styles.css` e `launch.js`:
 
-Detalha as três principais iniciativas da ONG: Educação, Cozinha Comunitária e Capacitação.
+1.  **`index.html` (Página Inicial)**
+    * Apresenta a ONG, um banner, um alerta de campanha e uma chamada para doação que ativa um Modal.
 
-Utiliza "Badges" (etiquetas) para categorizar os projetos.
+2.  **`projetos.html` (Página de Projetos)**
+    * Detalha as iniciativas da ONG usando o Grid System (`.col-lg-4`) para criar 3 colunas.
+    * Utiliza componentes de "Badge" (etiqueta) para categorizar os projetos.
 
-Usa links âncora (#educacao, #cozinha) para navegação interna, que são linkados pelo menu dropdown.
+3.  **`cadastro.html` (Página de Cadastro)**
+    * Um formulário completo que utiliza o Grid System (`.col-lg-7` e `.col-lg-5`) para um layout de 2 colunas em desktops.
 
-cadastro.html (Página de Cadastro)
+---
 
-Um formulário completo para cadastro de doações e voluntários.
+## 🛠️ Destaques Técnicos
 
-O formulário está dividido em "Dados Pessoais" e "Endereço", usando o grid para um layout de 2 colunas em telas maiores.
+### 1. Design System (`styles.css`)
+Um sistema de design completo foi estabelecido usando **Variáveis CSS (`:root`)** para garantir consistência global. Ele inclui:
+* **Paleta de Cores** (primária, secundária, fundo, texto, etc.)
+* **Tipografia** (5 tamanhos de fonte)
+* **Sistema de Espaçamento** (baseado em módulo 8px, de `--espaco-pp` a `--espaco-xg`)
 
-O formulário está configurado para enviar os dados via POST para um endpoint submit_form.php (backend não incluído).
+### 2. Grid System Responsivo (`styles.css`)
+Foi construído um **sistema de grid de 12 colunas** "mobile-first" usando Flexbox.
+* **Estrutura:** `.container`, `.row` e classes de coluna (ex: `.col-12`, `.col-md-6`, `.col-lg-4`).
+* **5 Breakpoints:** O grid se adapta em 5 tamanhos de tela (sm, md, lg, xl, xxl), permitindo layouts complexos e totalmente responsivos.
 
-🛠️ Destaques Técnicos
-O diferencial deste projeto não é apenas o site, mas a arquitetura front-end construída para ele.
+### 3. Componentes JavaScript (`launch.js`)
+Três componentes de UI interativos foram criados do zero:
+* **Menu Responsivo:** Um menu hambúrguer para mobile (`#btn-hamburger`) que se transforma em um menu de navegação horizontal em desktops.
+* **Dropdown (Submenu):** O item "Projetos" no menu possui um submenu funcional, que no mobile é ativado por clique (`.seta-dropdown`) e no desktop por `hover`.
+* **Modal (Popup):** Um modal reutilizável (`.modal`) que é ativado por botões com o atributo `data-modal-alvo` (ex: "Faça sua Doação").
 
-1. Design System (em styles.css)
-Um completo Design System foi definido usando variáveis CSS (:root) para garantir consistência global. Ele inclui:
+### 4. CSS Avançado
+* **Validação Visual de Formulário:** Os campos do `cadastro.html` usam as pseudo-classes `:valid` e `:invalid` para dar feedback visual instantâneo ao usuário.
+* **Estados de Componentes:** Botões (`.botao`) e links possuem estados de `:hover`, `:focus` e `:active` para melhor usabilidade e acessibilidade.
 
-Paleta de Cores: Variáveis como --cor-primaria, --cor-secundaria, --cor-fundo, etc.
+## 💻 Como Visualizar Localmente
+Não é necessário nenhum servidor ou instalação.
 
-Tipografia: Tamanhos padronizados para h1, h2, h3 e texto base.
-
-Sistema de Espaçamento: Um módulo baseado em 8px (de --espaco-pp a --espaco-xg) usado para padding, margin e gap.
-
-2. Grid System Responsivo (em styles.css)
-Um sistema de grid de 12 colunas, "mobile-first" e baseado em Flexbox foi criado do zero.
-
-Estrutura: Utiliza .container, .row e classes de coluna (ex: .col-12, .col-md-6, .col-lg-4).
-
-5 Breakpoints: O grid se adapta em 5 pontos de quebra (sm, md, lg, xl, xxl), permitindo layouts complexos e totalmente responsivos.
-
-3. Componentes Reutilizáveis
-O projeto é construído com componentes de CSS e JavaScript puros:
-
-Menu Responsivo (launch.js + styles.css): Um menu hambúrguer para dispositivos móveis que se transforma em um menu de desktop em telas maiores.
-
-Dropdown (Submenu) (launch.js + styles.css): O menu "Projetos" tem um submenu. No mobile, ele abre com um clique na seta (.seta-dropdown); no desktop, ele aparece com hover.
-
-Modal (Popup) (launch.js + styles.css): Um modal reutilizável para a chamada de doação. Ele é ativado por botões com o atributo data-modal-alvo e pode ser fechado clicando no 'X' ou no overlay.
-
-Cards (.caixa-destaque): O principal componente de "bloco" usado para agrupar todo o conteúdo.
-
-Validação de Formulário (CSS): Os campos do formulário em cadastro.html usam pseudo-classes :valid e :invalid para feedback visual instantâneo.
+1.  Clone este repositório para sua máquina.
+2.  Abra o arquivo `index.html` diretamente no seu navegador.
