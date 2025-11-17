@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos - Ong Corrente do Bem</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="caixa-destaque">
+            <img src="Imagens/logo.png" alt="Logo da Ong Corrente do Bem" width="200" height="200">
+            <button id="btn-hamburger">
+                <span class="linha"></span>
+                <span class="linha"></span>
+                <span class="linha"></span>
+            </button>
+            <nav id="nav-menu">
+                <button id="btn-fechar">&times;</button>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    
+                    <li>
+                        <a href="Projetos.html">Projetos</a>
+                        <span class="seta-dropdown">▼</span> <ul class="submenu">
+                            <li><a href="Projetos.html#educacao">Educação</a></li>
+                            <li><a href="Projetos.html#cozinha">Cozinha</a></li>
+                            <li><a href="Projetos.html#capacitacao">Capacitação</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="Banner">
+        <img src="Imagens/banner2.png" alt="Banner da Ong Corrente do Bem">
+    </div>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <section class="caixa-destaque">
+                        <h1>Nossos Projetos e Como Ajudar</h1>
+                        <p>Na Corrente do Bem, cada projeto é uma promessa de um futuro melhor. 
+                Atuamos diretamente em nossa comunidade com programas de reforço escolar, capacitação profissional e apoio direto a famílias em vulnerabilidade. 
+                Nosso foco é criar oportunidades reais para crianças, jovens e adultos.</p>
+                    </section>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <h2>Iniciativas em Destaque</h2>
+                </div>
+                
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="caixa-destaque" id="educacao"> 
+                        <h3>Educação para Todos <span class="badge badge-primario">Educação</span></h3>
+                        <img src="Imagens/educaçao para todos.png" alt="Imagem representando educação" width="300" height="200">
+                        <p>Acreditamos que o talento está em toda parte, mas as oportunidades não. 
+                    Este projeto existe para mudar isso. Oferecemos reforço escolar e atividades extracurriculares que vão além do básico,
+                     ajudando crianças e adolescentes a descobrir seu potencial e construir um futuro brilhante.</p>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="caixa-destaque" id="cozinha">
+                        <h3>Cozinha Comunitária <span class="badge badge-secundario">Alimentação</span></h3>
+                        <img src="Imagens/cozinha comunitaria.png" alt="Imagem representando cozinha comunitária" width="300" height="200">
+                        <p>Nenhum prato deve ficar vazio. Este é o lema da nossa Cozinha Comunitária, que atua na linha de frente contra a fome. 
+                    Diariamente, distribuímos refeições nutritivas, levando segurança alimentar e esperança para pessoas em situação de rua e famílias em vulnerabilidade.</p>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <article class="caixa-destaque" id="capacitacao">
+                        <h3>Capacitação Profissional <span class="badge badge-primario">Emprego</span></h3>
+                        <img src="Imagens/capacitaçao profissional.png" alt="Imagem representando capacitação profissional" width="300" height="200">
+                        <p>Mudar a própria história começa com uma oportunidade. Oferecemos cursos e workshops desenhados para empoderar jovens e adultos,
+                     dando-lhes a confiança e as habilidades para conquistar seu espaço no mercado de trabalho. Nosso foco é a autonomia financeira,
+                      o primeiro passo para uma vida com mais escolhas.</p>
+                    </article>
+                </div>
+            </div> 
+
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <section class="caixa-destaque">
+                        <h2>Doe para Fazer a Diferença</h2>
+                        <p>Cada doação, não importa o valor, é um elo que fortalece nossa corrente. Sua contribuição nos permite continuar oferecendo refeições quentes,
+                 aulas de reforço e cursos profissionalizantes. Você tem o poder de transformar vidas. Faça a diferença hoje!</p>
+                        <button class="botao" data-modal-alvo="#modal-doacao">Faça sua Doação</button>
+                    </section>
+                </div>
+                <div class="col-12 col-md-6">
+                    <section class="caixa-destaque">
+                        <img src="Imagens/doaçao.png" alt="Imagem representando doação" width="500" height="400">
+                    </section>
+                </div>
+            </div> 
+
+            <div class="row">
+                <div class="col-12">
+                    <section class="caixa-destaque">
+                        <h2>Métodos de Doação</h2>
+                        <ul>
+                            <li>Transferência Bancária</li>
+                            <li>Cartão de Crédito/Débito</li>
+                            <li>PIX</li>
+                            <li>Doação de Itens</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+
+        </div> 
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ong Corrente do Bem. Todos os direitos reservados.</p>
+            <p>Feito por Gabriel Alves</p>
+        </div>
+    </footer>
+
+    <div class="modal" id="modal-doacao">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-fechar">&times;</button>
+            <h2>Faça a Diferença</h2>
+            <p>Sua contribuição é fundamental para mantermos nossos projetos ativos. Ao clicar no botão abaixo, você será redirecionado para nossa página de cadastro seguro.</p>
+            <button class="botao" onclick="location.href='cadastro.html'">Ir para o Cadastro</button>
+        </div>
+    </div>
+
+    <script src="Launch.js"></script>
+</body>
+</html>

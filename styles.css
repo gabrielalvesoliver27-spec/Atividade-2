@@ -1,0 +1,655 @@
+/* --- ETAPA 1: O DESIGN SYSTEM --- */
+/* :root é onde definimos nossas variáveis globais */
+:root {
+    /* 1. Paleta de Cores (8 cores) */
+    --cor-primaria: #0771db;      /* Azul principal (menu, links) */
+    --cor-secundaria: #f70101;   /* Vermelho (botões de ação) */
+    --cor-fundo: #f4f4f4;         /* Cinza claro do body */
+    --cor-superficie: #ffffff;   /* Branco (cards, header) */
+    --cor-texto-principal: #333333; /* Preto suave (parágrafos) */
+    --cor-texto-secundario: #777777; /* Cinza (footer) */
+    --cor-borda: #cccccc;         /* Cinza para bordas de formulário */
+    --cor-branco-puro: #ffffff;   /* Texto dos botões e menu mobile */
+    --cor-validacao-sucesso: #28a745; /* Verde para formulário válido */
+    --cor-validacao-erro: #dc3545; /* Vermelho para formulário inválido */
+    --cor-info: #17a2b8; /* Azul claro para Alertas */
+
+    /* 2. Tipografia (5 tamanhos) */
+    --fonte-tam-h1: 2.25rem; /* 36px */
+    --fonte-tam-h2: 1.75rem; /* 28px */
+    --fonte-tam-h3: 1.25rem; /* 20px */
+    --fonte-tam-base: 1rem;   /* 16px (padrão) */
+    --fonte-tam-pequena: 0.875rem; /* 14px */
+
+    /* 3. Sistema de Espaçamento (Módulo 8px) */
+    --espaco-pp: 0.5rem;   /* 8px */
+    --espaco-p: 1rem;    /* 16px */
+    --espaco-m: 1.5rem;  /* 24px */
+    --espaco-g: 2rem;    /* 32px */
+    --espaco-gg: 3rem;   /* 48px */
+    --espaco-xg: 4rem;   /* 64px */
+
+    /* 4. Outras Variáveis do Sistema */
+    --raio-borda: var(--espaco-pp); /* 8px */
+    --sombra-card: 0 4px 8px rgba(0,0,0,0.1);
+    --transicao-rapida: 0.3s ease;
+}
+
+/* --- Estilos Gerais (Reset e Body) --- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto-principal);
+    font-size: var(--fonte-tam-base);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: var(--fonte-tam-h1);
+    color: var(--cor-primaria);
+    text-align: center;
+    margin-bottom: var(--espaco-m);
+}
+
+h2 {
+    font-size: var(--fonte-tam-h2);
+    color: var(--cor-texto-principal);
+    text-align: center;
+    margin-bottom: var(--espaco-m);
+}
+
+h3 {
+    font-size: var(--fonte-tam-h3);
+    color: var(--cor-texto-principal);
+    text-align: center;
+    margin-bottom: var(--espaco-p);
+}
+
+p {
+    padding: 0 var(--espaco-p) var(--espaco-p);
+}
+
+ul {
+    padding-left: var(--espaco-g);
+}
+
+/* --- Cabeçalho --- */
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: var(--cor-superficie);
+    z-index: 90;
+    box-shadow: var(--sombra-card);
+}
+
+header .caixa-destaque {
+    padding: var(--espaco-p) var(--espaco-m);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .caixa-destaque img {
+    height: 80px; /* Mantido fixo para o logo */
+    width: auto;
+}
+
+/* --- Banner Responsivo --- */
+.Banner img {
+    width: 100%;     
+    height: 400px;   
+    object-fit: cover;
+    object-position: center; 
+}
+
+@media (max-width: 768px) {
+    .Banner img {
+        height: 250px; 
+    }
+}
+
+/* --- Menu Hambúrguer (Mobile) --- */
+#btn-hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--espaco-pp);
+    display: block;
+}
+
+#btn-hamburger .linha {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--cor-texto-principal);
+    margin: 5px 0;
+    transition: var(--transicao-rapida);
+}
+
+#btn-fechar {
+    position: absolute;
+    top: var(--espaco-p);
+    right: var(--espaco-m);
+    background: none;
+    border: none;
+    color: var(--cor-branco-puro);
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+}
+
+#btn-fechar:hover {
+    color: var(--cor-borda);
+}
+
+/* --- Navegação Mobile (Menu Lateral) --- */
+#nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: var(--cor-primaria);
+    padding: var(--espaco-m);
+    box-sizing: border-box;
+    transform: translateX(-100%);
+    transition: transform var(--transicao-rapida);
+    z-index: 100;
+}
+
+#nav-menu.aberto {
+    transform: translateX(0);
+}
+
+#nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: var(--espaco-xg); /* Espaço para o botão 'X' */
+}
+
+/* NOVO: Ajuste para item com submenu */
+#nav-menu li {
+    position: relative;
+}
+
+#nav-menu li a {
+    text-decoration: none;
+    color: var(--cor-branco-puro);
+    display: block;
+    padding: var(--espaco-p);
+    font-size: var(--fonte-tam-h3);
+    border-radius: var(--raio-borda);
+    transition: var(--transicao-rapida);
+}
+
+#nav-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Componente: Card (.caixa-destaque) --- */
+.caixa-destaque {
+    background-color: var(--cor-superficie); 
+    border-radius: var(--raio-borda);
+    /* margin: var(--espaco-m); */ /* Removido: O grid vai cuidar do espaçamento */
+    margin-bottom: var(--espaco-m); /* Adicionado: Para empilhar em mobile */
+    padding: var(--espaco-m);
+    box-shadow: var(--sombra-card); 
+    width: 100%; /* Garante que o card ocupe o espaço da coluna */
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+}
+
+/* --- Componente: Imagem Responsiva --- */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--raio-borda);
+    margin: 0 auto var(--espaco-m); /* Centraliza e dá espaço abaixo */
+}
+
+/* --- Componente: Botão (com estados) --- */
+.botao {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branco-puro);
+    padding: var(--espaco-p) var(--espaco-m);
+    border: none;
+    border-radius: var(--raio-borda);
+    text-decoration: none;
+    font-size: var(--fonte-tam-base);
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: var(--espaco-p);
+    transition: var(--transicao-rapida);
+}
+
+/* Estado :hover (mouse em cima) */
+.botao:hover {
+    background-color: #c00; /* Um tom mais escuro de vermelho */
+    transform: translateY(-2px); /* Efeito sutil de elevação */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Estado :focus (navegação por teclado) */
+.botao:focus {
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: 2px;
+}
+
+/* Estado :active (clicando) */
+.botao:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* --- Componente: Formulário (com validação visual) --- */
+
+form {
+    text-align: left; /* Alinha labels e inputs à esquerda */
+}
+
+form label {
+    display: block;
+    margin-top: var(--espaco-m);
+    font-weight: bold;
+    color: var(--cor-texto-principal);
+    margin-bottom: var(--espaco-pp);
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="date"],
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: var(--espaco-p);
+    margin-top: var(--espaco-pp);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    box-sizing: border-box; /* Garante que padding não estoure a largura */
+    font-size: var(--fonte-tam-base);
+    transition: var(--transicao-rapida);
+}
+
+/* Validação Visual: Borda verde quando válido */
+form input:valid,
+form select:valid {
+    border-color: var(--cor-validacao-sucesso);
+}
+
+/* Validação Visual: Borda vermelha quando inválido */
+form input:invalid:not(:placeholder-shown):not(:focus),
+form select:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: var(--cor-validacao-erro);
+}
+
+form input[type="submit"] {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco-puro);
+    padding: var(--espaco-p) var(--espaco-m);
+    border: none;
+    border-radius: var(--raio-borda);
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: var(--espaco-g);
+    width: 100%;
+    transition: var(--transicao-rapida);
+}
+
+form input[type="submit"]:hover {
+    background-color: #004a9a; /* Azul mais escuro */
+}
+
+/* --- Rodapé --- */
+footer {
+    text-align: center;
+    margin-top: var(--espaco-g);
+    padding-bottom: var(--espaco-m);
+    font-size: var(--fonte-tam-pequena);
+    color: var(--cor-texto-secundario);
+}
+
+
+/* ===============================================
+--- ETAPA 2: GRID SYSTEM E LAYOUT ---
+===============================================
+*/
+
+/* 1. O Container (Centraliza o conteúdo) */
+.container {
+    width: 100%;
+    padding-left: var(--espaco-m);  /* 24px */
+    padding-right: var(--espaco-m); /* 24px */
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+/* 2. A Linha (O container Flexbox para as colunas) */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    /* Margens negativas para compensar o padding das colunas (gutter) */
+    margin-left: calc(-1 * var(--espaco-p)); /* -16px */
+    margin-right: calc(-1 * var(--espaco-p)); /* -16px */
+}
+
+/* 3. As Colunas (Definição base) */
+/* "col-" é o padrão (mobile-first): 100% de largura */
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, 
+.col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    width: 100%;
+    padding-left: var(--espaco-p);  /* 16px */
+    padding-right: var(--espaco-p); /* 16px */
+    box-sizing: border-box;
+}
+
+/* --- 5 Breakpoints Responsivos --- */
+
+/* Breakpoint 1: Small (sm) - Celulares Maiores (576px+) */
+@media (min-width: 576px) {
+    .container { max-width: 540px; }
+    .col-sm-1  { flex: 0 0 8.333333%;  max-width: 8.333333%;  }
+    .col-sm-2  { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-sm-3  { flex: 0 0 25%;         max-width: 25%;         }
+    .col-sm-4  { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-sm-5  { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .col-sm-6  { flex: 0 0 50%;         max-width: 50%;         }
+    .col-sm-7  { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-sm-8  { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-sm-9  { flex: 0 0 75%;         max-width: 75%;         }
+    .col-sm-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-sm-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-sm-12 { flex: 0 0 100%;        max-width: 100%;        }
+}
+
+/* Breakpoint 2: Medium (md) - Tablets (768px+) */
+@media (min-width: 768px) {
+    .container { max-width: 720px; }
+    .col-md-1  { flex: 0 0 8.333333%;  max-width: 8.333333%;  }
+    .col-md-2  { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-md-3  { flex: 0 0 25%;         max-width: 25%;         }
+    .col-md-4  { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-md-5  { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .col-md-6  { flex: 0 0 50%;         max-width: 50%;         }
+    .col-md-7  { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-md-8  { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-md-9  { flex: 0 0 75%;         max-width: 75%;         }
+    .col-md-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-md-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-md-12 { flex: 0 0 100%;        max-width: 100%;        }
+
+    /* --- Menu Desktop --- */
+    #btn-hamburger,
+    #btn-fechar {
+        display: none;
+    }
+    #nav-menu {
+        position: static;
+        transform: none;
+        height: auto;
+        width: auto;
+        background-color: transparent;
+        padding: 0;
+    }
+    #nav-menu ul {
+        display: flex;
+        gap: var(--espaco-m); /* Usa nossa variável de espaçamento */
+        margin-top: 0;
+    }
+    #nav-menu li a {
+        color: var(--cor-primaria);
+        font-weight: bold;
+        padding: var(--espaco-pp) var(--espaco-p);
+        font-size: var(--fonte-tam-base);
+    }
+    #nav-menu li a:hover {
+        background-color: var(--cor-fundo);
+        border-radius: var(--raio-borda);
+    }
+}
+
+/* Breakpoint 3: Large (lg) - Desktops Pequenos (992px+) */
+@media (min-width: 992px) {
+    .container { max-width: 960px; }
+    .col-lg-1  { flex: 0 0 8.333333%;  max-width: 8.333333%;  }
+    .col-lg-2  { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-lg-3  { flex: 0 0 25%;         max-width: 25%;         }
+    .col-lg-4  { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-lg-5  { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .col-lg-6  { flex: 0 0 50%;         max-width: 50%;         }
+    .col-lg-7  { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-lg-8  { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-lg-9  { flex: 0 0 75%;         max-width: 75%;         }
+    .col-lg-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-lg-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-lg-12 { flex: 0 0 100%;        max-width: 100%;        }
+}
+
+/* Breakpoint 4: Extra Large (xl) - Desktops (1200px+) */
+@media (min-width: 1200px) {
+    .container { max-width: 1140px; }
+    .col-xl-1  { flex: 0 0 8.333333%;  max-width: 8.333333%;  }
+    .col-xl-2  { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-xl-3  { flex: 0 0 25%;         max-width: 25%;         }
+    .col-xl-4  { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-xl-5  { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .col-xl-6  { flex: 0 0 50%;         max-width: 50%;         }
+    .col-xl-7  { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-xl-8  { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-xl-9  { flex: 0 0 75%;         max-width: 75%;         }
+    .col-xl-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-xl-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-xl-12 { flex: 0 0 100%;        max-width: 100%;        }
+}
+
+/* Breakpoint 5: Extra Extra Large (xxl) - Desktops Grandes (1400px+) */
+@media (min-width: 1400px) {
+    .container { max-width: 1320px; }
+    .col-xxl-1  { flex: 0 0 8.333333%;  max-width: 8.333333%;  }
+    .col-xxl-2  { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .col-xxl-3  { flex: 0 0 25%;         max-width: 25%;         }
+    .col-xxl-4  { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-xxl-5  { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .col-xxl-6  { flex: 0 0 50%;         max-width: 50%;         }
+    .col-xxl-7  { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .col-xxl-8  { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .col-xxl-9  { flex: 0 0 75%;         max-width: 75%;         }
+    .col-xxl-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .col-xxl-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .col-xxl-12 { flex: 0 0 100%;        max-width: 100%;        }
+}
+
+
+/* ===============================================
+--- ETAPA 3: DROPDOWN, BADGES E FEEDBACK (NOVO) ---
+===============================================
+*/
+
+/* --- 3.1 Componente: Dropdown (Submenu) --- */
+
+/* Esconde a setinha de dropdown no desktop */
+.seta-dropdown {
+    display: none;
+}
+
+/* O container do submenu (escondido por padrão) */
+.submenu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilos do Dropdown no Desktop (hover) */
+@media (min-width: 768px) {
+    .submenu {
+        position: absolute;
+        top: 100%; /* Aparece logo abaixo do item pai */
+        left: 0;
+        background-color: var(--cor-superficie);
+        min-width: 200px;
+        box-shadow: var(--sombra-card);
+        border-radius: var(--raio-borda);
+        z-index: 110;
+        padding: var(--espaco-pp) 0;
+    }
+
+    /* Mostra o submenu quando o <li> pai está em :hover */
+    #nav-menu li:hover > .submenu {
+        display: block;
+    }
+
+    /* Links dentro do dropdown */
+    .submenu li a {
+        color: var(--cor-primaria);
+        padding: var(--espaco-pp) var(--espaco-p);
+        font-size: var(--fonte-tam-pequena);
+        font-weight: normal;
+    }
+
+    .submenu li a:hover {
+        background-color: var(--cor-fundo);
+    }
+}
+
+/* Estilos do Dropdown no Mobile (click) */
+@media (max-width: 767px) {
+    /* Mostra a setinha */
+    .seta-dropdown {
+        display: block;
+        position: absolute;
+        right: var(--espaco-p);
+        top: var(--espaco-p);
+        color: var(--cor-branco-puro);
+        font-size: var(--fonte-tam-base);
+        cursor: pointer;
+    }
+
+    /* Estilo do submenu (não mais flutuante) */
+    .submenu {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.2); /* Fundo mais escuro */
+        padding-left: var(--espaco-p);
+        /* display: none; é o padrão */
+    }
+
+    /* Classe .submenu-aberto (controlada por JS) mostra o menu */
+    .submenu-aberto > .submenu {
+        display: block;
+    }
+
+    .submenu li a {
+        font-size: var(--fonte-tam-base); /* Um pouco menor que o pai */
+        padding: var(--espaco-pp) var(--espaco-p);
+    }
+}
+
+
+/* --- 3.2 Componente: Badges (Etiquetas) --- */
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.6em; /* espaçamento relativo */
+    font-size: var(--fonte-tam-pequena);
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: var(--raio-borda);
+    margin-left: var(--espaco-pp);
+}
+
+/* Variação de cor Primária */
+.badge-primario {
+    color: var(--cor-branco-puro);
+    background-color: var(--cor-primaria);
+}
+
+/* Variação de cor Secundária */
+.badge-secundario {
+    color: var(--cor-branco-puro);
+    background-color: var(--cor-secundaria);
+}
+
+/* --- 3.3 Componente: Feedback (Alert e Modal) --- */
+
+/* Alert (Aviso) */
+.alert {
+    padding: var(--espaco-p) var(--espaco-m);
+    margin-bottom: var(--espaco-m);
+    border: 1px solid transparent;
+    border-radius: var(--raio-borda);
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+/* Modal (Popup) */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Classe .aberto (controlada por JS) mostra o modal */
+.modal.aberto {
+    display: block;
+}
+
+/* Fundo escuro */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1001;
+}
+
+/* Conteúdo do Modal */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--cor-superficie);
+    padding: var(--espaco-g);
+    border-radius: var(--raio-borda);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    z-index: 1002;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Botão de Fechar 'X' */
+.modal-fechar {
+    position: absolute;
+    top: var(--espaco-p);
+    right: var(--espaco-p);
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--cor-borda);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-fechar:hover {
+    color: var(--cor-texto-principal);
+}
