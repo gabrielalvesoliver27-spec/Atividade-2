@@ -51,8 +51,3 @@ Três componentes de UI interativos foram criados do zero:
 * **Validação Visual de Formulário:** Os campos do `cadastro.html` usam as pseudo-classes `:valid` e `:invalid` para dar feedback visual instantâneo ao usuário.
 * **Estados de Componentes:** Botões (`.botao`) e links possuem estados de `:hover`, `:focus` e `:active` para melhor usabilidade e acessibilidade.
 
-## 💻 Como Visualizar Localmente
-Não é necessário nenhum servidor ou instalação.
-
-1.  Clone este repositório para sua máquina.
-2.  Abra o arquivo `index.html` diretamente no seu navegador.
